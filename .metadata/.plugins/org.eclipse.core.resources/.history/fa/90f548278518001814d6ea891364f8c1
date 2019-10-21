@@ -1,0 +1,5 @@
+package core.dao.master;
+
+public interface MstGroupDealerDao {
+
+}

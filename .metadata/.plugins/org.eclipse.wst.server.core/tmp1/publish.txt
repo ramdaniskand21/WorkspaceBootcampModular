@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Fri Feb 23 18:31:29 ICT 2018
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\E450\\.m2\\repository\\org\\springframework\\spring-web\\4.0.3.RELEASE\\spring-web-4.0.3.RELEASE.jar=WEB-INF/lib/spring-web-4.0.3.RELEASE.jar
+org.eclipse.jst.j2ee.server\:global-core=WEB-INF/lib/global-core-1.0.jar

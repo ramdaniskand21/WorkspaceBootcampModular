@@ -1,0 +1,106 @@
+<zk>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('ui.master.AnkSewaVmd')">
+
+		<window id="winRunFormat" width="45%" height="55%" mode="modal"
+			form="@id('fx') @init(vm.formMaster) @load(vm.ankSewaDto) @save(vm.ankSewaDto, before='save')">
+
+			<borderlayout height="100%">
+				<north sclass="borderless">
+					<div sclass="page-header">
+						<!-- TITLE AREA -->
+						<include
+							src="WEB-INF/template/toolbarTitleDetail.zul" />
+						<!-- TITLE AREA -->
+
+						<hbox>
+							<!-- BUTTON AREA -->
+							<hbox width="100%">
+								<button sclass="btn-index"
+									iconSclass="z-icon-save" tooltiptext="${labels.save}"
+									visible="@load(vm.pageInfo.addMode or vm.pageInfo.editMode)"
+									onClick="@command('save')" />
+								<button sclass="btn-index"
+									iconSclass="z-icon-times" tooltiptext="${labels.cancel}"
+									visible="@load(vm.pageInfo.addMode or vm.pageInfo.editMode)"
+									onClick="@command(fxStatus.dirty? 'showDirty' : 'back')" />
+								<button sclass="btn-index"
+									iconSclass="z-icon-reply" tooltiptext="${labels.exit}"
+									onClick="@command('back')"
+									visible="@load(vm.pageInfo.viewMode eq true)" />
+							</hbox>
+
+							<!-- BUTTON AREA -->
+						</hbox>
+						<separator spacing="2px" />
+					</div>
+				</north>
+
+				<!-- CONTENT AREA START -->
+				<center sclass="borderless" autoscroll="true">
+					<div>
+						<grid>
+							<columns>
+								<column hflex="1" />
+								<column hflex="2" />
+							</columns>
+							<rows>
+								<row>
+									<label value="Sewa ID"/>
+									<textbox value="@bind(fx.sewaId)" 
+										disabled="true"/>
+								</row>
+								<row>
+									<label value="Nama"/>
+									<textbox value="@bind(fx.sewaNama)"
+										constraint="no empty"
+										disabled="@load(vm.pageInfo.viewMode)"/>
+								</row>
+								<row>
+									<label value="Alamat"/>
+									<textbox value="@bind(fx.sewaAlamat)"
+										constraint="no empty"
+										disabled="@load(vm.pageInfo.viewMode)"/>
+								</row>
+								<row>
+									<label value="Mobil"/>
+									<hlayout>
+										<textbox
+											value="@bind(fx.mobilId)" disabled="true"/>
+										<button iconSclass="z-icon-plus"
+												sclass="btn-lov-white"
+												onClick="@command('showLov', popup='/WEB-INF/application-pages/lov/MobilinLov.zul',lovHandler='ankMobilHandler')"/>
+									</hlayout>
+								</row>
+								<row>
+									<label value="Supir"/>
+									<hlayout>
+										<textbox
+											value="@bind(fx.supirId)" disabled="true"/>
+										<button iconSclass="z-icon-plus"
+												sclass="btn-lov-white"
+												onClick="@command('showLov', popup='/WEB-INF/application-pages/lov/SupirinLov.zul',lovHandler='ankSupirHandler')"/>
+									</hlayout>
+								</row>
+								<row>
+									<label value="Tanggal Sewa"/>
+									<datebox format="dd/MM/yyyy" value="@bind(fx.tglSewa)"/>
+								</row>
+								<row>
+									<label value="Tanggal Pengembalian"/>
+									<datebox format="dd/MM/yyyy" value="@bind(fx.tglAkhir)"/>
+								</row>
+								<row>
+									<label value="Harga"/>
+									<textbox value="@bind(fx.harga)"
+										disabled="@load(vm.pageInfo.viewMode)" readonly="false" />
+								</row>
+							</rows>
+						</grid>
+
+					</div>
+				</center>
+			</borderlayout>
+		</window>
+	</div>
+</zk>

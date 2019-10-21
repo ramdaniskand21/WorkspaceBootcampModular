@@ -1,0 +1,47 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<zk>
+	<window id="lov" mode="modal" apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm') @init('ui.lov.SupirinLovVmd')" closable="true" width="50%">
+		
+<!-- 		TITLE AREA -->
+		<vbox hflex="1" width="50%" align="end">
+			<include src="/WEB-INF/template/toolbarlov.zul"/>
+		</vbox>	
+		
+<!-- 		TOOLBAR AREA -->
+		
+<!-- 		CONTENT AREA -->
+		<div width="100%" style="overflow:auto">
+		<listbox sizedByContent="true" model="@bind(vm.ankSupirDtos)" emptyMessage="${labels.I003}"
+			selectedItem="@bind(vm.ankSupirDto)">
+		<listhead>
+			<listheader label="${labels.supirId}" sort="auto(supirId)"
+				onSort="@command('sort', col='supirId')"/>
+			<listheader label="${labels.supirNama}" sort="auto(supirNama)"
+				onSort="@command('sort', col='supirNama')"/>
+			<listheader label="${labels.supirAlamat}" sort="auto(supirAlamat)"
+				onSort="@command('sort', col='supirAlamat')"/>
+			<listheader label="${labels.harga}" sort="auto(harga)"
+				onSort="@command('sort', col='harga')"/>
+		</listhead>
+		<template name="model">
+			<listitem>
+				<listcell label="@bind(each.supirId)"
+					onDoubleClick="@command('choose')"/>
+				<listcell label="@bind(each.supirNama)"
+					onDoubleClick="@command('choose')"/>
+				<listcell label="@bind(each.supirAlamat)"
+					onDoubleClick="@command('choose')"/>
+				<listcell label="@bind(each.harga)"
+					onDoubleClick="@command('choose')"/>
+			</listitem>
+		</template>
+		</listbox>
+		</div>
+		<hbox>
+			<space spacing="20px"/>
+			<paging pageSize="@load(vm.pageSize)"
+				totalSize="@load(vm.totalSize)" activePage="@bind(vm.activePage)"/>
+		</hbox>
+	</window>
+</zk>

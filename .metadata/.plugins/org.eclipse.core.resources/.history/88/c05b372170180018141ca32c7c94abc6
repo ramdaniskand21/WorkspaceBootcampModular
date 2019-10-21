@@ -1,0 +1,61 @@
+package core.model.modelTree;
+
+import java.util.List;
+
+import org.zkoss.zul.AbstractTreeModel;
+
+import share.dtoTree.MstMenuTreeDto;
+
+public class MstMenuTree extends AbstractTreeModel<MstMenuTreeDto>{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private MstMenuTreeDto root;
+
+	public MstMenuTree(MstMenuTreeDto root) {
+		super(root);
+		setRoot(root);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public MstMenuTreeDto getData() {
+//		System.out.println("dari getData() = " + getRoot().getBranchCode());
+		return getRoot();
+	}
+
+	@Override
+	public boolean isLeaf(MstMenuTreeDto node) {
+		return node.getChildren().size() == 0;
+	}
+
+	@Override
+	public MstMenuTreeDto getChild(MstMenuTreeDto parent, int index) {
+		return parent.getChildren().get(index);
+	}
+
+	@Override
+	public int getChildCount(MstMenuTreeDto parent) {
+		return parent.getChildren().size();
+	}
+	
+	public int getIndexOfChild(MstMenuTreeDto parent, Object child){
+		List<MstMenuTreeDto> children = parent.getChildren();
+		for(int i = 0; i < children.size(); i++){
+			if (children.get(i).equals(child))
+				return i;
+		}
+		return -1;
+	}
+
+	public MstMenuTreeDto getRoot() {
+		return root;
+	}
+
+	public void setRoot(MstMenuTreeDto root) {
+		this.root = root;
+	}
+
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v7.0 Server at localhost (ui)-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v7.0 Server at localhost (ui)" name="Tomcat v7.0 Server at localhost (ui)" runtime-id="Tomcat v7.0 Server at localhost (ui)" server-type="org.eclipse.jst.server.tomcat.70" server-type-id="org.eclipse.jst.server.tomcat.70" start-timeout="500" stop-timeout="500" testEnvironment="true" timestamp="2">
+    <list key="modules" value0="application-ui::org.eclipse.jst.jee.server:application-ui::jst.web::3.0"/>
+  </server>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v7.0 Server at localhost (core)-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v7.0 Server at localhost (core)" name="Tomcat v7.0 Server at localhost (core)" runtime-id="Tomcat v7.0 Server at localhost (ui)" server-type="org.eclipse.jst.server.tomcat.70" server-type-id="org.eclipse.jst.server.tomcat.70" start-timeout="500" stop-timeout="500" testEnvironment="true" timestamp="2">
+    <list key="modules" value0="application-core::org.eclipse.jst.jee.server:application-core::jst.web::3.0"/>
+  </server>
+</servers>

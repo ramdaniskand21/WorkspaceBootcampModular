@@ -1,0 +1,7 @@
+package core.service.master.impl;
+
+import core.service.master.MasterGroupDealerSvc;
+
+public class MaterGroupDealerSvcImpl implements MasterGroupDealerSvc {
+
+}
